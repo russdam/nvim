@@ -13,10 +13,10 @@ return {
     opts = {
       overrides = function(colors)
         return {
-          LspReferenceWrite = { bg = colors.palette.MintyFresh, fg = colors.palette.MochaBrown },
-          LspReferenceRead = { bg = colors.palette.MintyFresh, fg = colors.palette.MochaBrown },
-          LspReferenceText = { bg = colors.palette.MintyFresh, fg = colors.palette.MochaBrown },
-          vim_lsp_references = { bg = colors.palette.MintyFresh, fg = colors.palette.MochaBrown },
+          LspReferenceWrite = { fg = colors.palette.MochaBrown },
+          LspReferenceRead = { fg = colors.palette.MochaBrown },
+          LspReferenceText = { fg = colors.palette.MochaBrown },
+          vim_lsp_references = { fg = colors.palette.MochaBrown },
           vim.api.nvim_set_hl(0, "@lsp.type.lifetime.rust", { italic = true }),
         }
       end,
