@@ -1,0 +1,20 @@
+return {}
+-- return {
+--   {
+--     "LazyVim/LazyVim",
+--     opts = {
+--       -- Leave this empty or set to "electrovoid" to stop LazyVim from hunting for a plugin
+--       colorscheme = "electrovoid",
+--     },
+--     init = function()
+--       -- Force Neovim to load your local theme immediately before plugins finish loading
+--       vim.api.nvim_create_autocmd("User", {
+--         pattern = "VeryLazy",
+--         callback = function()
+--           vim.cmd("colorscheme electrovoid")
+--         end,
+--       })
+--     end,
+--   },
+-- }
+--

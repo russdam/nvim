@@ -1,0 +1,304 @@
+-- ElectroVoid: a Neovim colorscheme port of the Zed ElectroVoid theme.
+-- Source palette: Zed ElectroVoid Theme.json
+-- Install at: ~/.config/nvim/colors/electrovoid.lua
+
+vim.cmd("highlight clear")
+if vim.fn.exists("syntax_on") then
+  vim.cmd("syntax reset")
+end
+vim.o.background = "dark"
+vim.g.colors_name = "electrovoid"
+vim.o.termguicolors = true
+
+local c = {
+  black = "#000000",
+  background = "#000000",
+  surface = "#101010",
+  surface2 = "#141414",
+  hover = "#1a1a1a",
+  active = "#202020",
+  border = "#444444",
+  muted = "#888888",
+  dim = "#555555",
+  white = "#ffffff",
+  soft_white = "#cccccc",
+  purple = "#8800ff",
+  purple_bright = "#bb00ff",
+  purple_soft = "#aa66ff",
+  pink = "#ff2fa0",
+  pink_light = "#ff88ff",
+  magenta = "#ff44ff",
+  lavender = "#e77ee7",
+  green = "#00ff88",
+  cyan = "#00e5ff",
+  yellow = "#ffaa00",
+  red = "#ff3b5c",
+  orange = "#ffaa00",
+  comment_orange = "#FFAF00",
+  comment_doc_orange = "#03735E",
+}
+
+local function hi(group, opts)
+  vim.api.nvim_set_hl(0, group, opts)
+end
+
+-- Editor and UI
+hi("Normal", { fg = c.white, bg = c.background })
+hi("NormalNC", { fg = c.white, bg = c.background })
+hi("NormalFloat", { fg = c.white, bg = c.surface })
+hi("FloatBorder", { fg = c.purple, bg = c.surface })
+hi("FloatTitle", { fg = c.purple_bright, bg = c.surface, bold = true })
+hi("ColorColumn", { bg = c.surface2 })
+hi("Cursor", { fg = c.black, bg = c.purple_bright })
+hi("lCursor", { fg = c.black, bg = c.purple_bright })
+hi("CursorIM", { fg = c.black, bg = c.purple_bright })
+hi("CursorLine", { bg = c.surface2 })
+hi("CursorColumn", { bg = c.surface2 })
+hi("LineNr", { fg = c.border, bg = c.surface })
+hi("CursorLineNr", { fg = c.purple_bright, bg = c.surface2, bold = true })
+hi("SignColumn", { fg = c.muted, bg = c.surface })
+hi("FoldColumn", { fg = c.dim, bg = c.surface })
+hi("Folded", { fg = c.muted, bg = c.surface2 })
+hi("VertSplit", { fg = "#333333", bg = c.background })
+hi("WinSeparator", { fg = "#333333", bg = c.background })
+hi("StatusLine", { fg = c.white, bg = c.surface })
+hi("StatusLineNC", { fg = c.muted, bg = c.black })
+hi("TabLine", { fg = c.muted, bg = c.black })
+hi("TabLineFill", { bg = c.black })
+hi("TabLineSel", { fg = c.white, bg = c.surface, bold = true })
+hi("WinBar", { fg = c.white, bg = c.surface })
+hi("WinBarNC", { fg = c.muted, bg = c.black })
+hi("Pmenu", { fg = c.white, bg = c.surface })
+hi("PmenuSel", { fg = c.white, bg = "#3b0066", bold = true })
+hi("PmenuSbar", { bg = c.surface2 })
+hi("PmenuThumb", { bg = c.border })
+hi("WildMenu", { fg = c.white, bg = "#3b0066" })
+hi("Visual", { bg = "#3b0066" })
+hi("VisualNOS", { bg = "#3b0066" })
+hi("Search", { fg = c.white, bg = "#3b0066" })
+hi("IncSearch", { fg = c.black, bg = c.purple_bright, bold = true })
+hi("CurSearch", { fg = c.black, bg = c.purple_bright, bold = true })
+hi("MatchParen", { fg = c.purple_bright, bg = c.active, bold = true })
+hi("Whitespace", { fg = c.border })
+hi("NonText", { fg = c.border })
+hi("SpecialKey", { fg = c.border })
+hi("EndOfBuffer", { fg = c.black })
+hi("Directory", { fg = c.cyan })
+hi("Title", { fg = c.lavender, bold = true })
+hi("Question", { fg = c.green })
+hi("MoreMsg", { fg = c.green })
+hi("ModeMsg", { fg = c.soft_white })
+hi("WarningMsg", { fg = c.yellow })
+hi("ErrorMsg", { fg = c.red, bold = true })
+hi("Conceal", { fg = c.muted })
+hi("QuickFixLine", { bg = c.surface2, bold = true })
+hi("SpellBad", { undercurl = true, sp = c.red })
+hi("SpellCap", { undercurl = true, sp = c.cyan })
+hi("SpellLocal", { undercurl = true, sp = c.purple })
+hi("SpellRare", { undercurl = true, sp = c.pink })
+
+-- Syntax groups: mapped from Zed's syntax scopes.
+hi("Comment", { fg = c.comment_orange }) --dim, italic = true })
+hi("Constant", { fg = c.yellow })
+hi("String", { fg = c.green })
+hi("Character", { fg = c.green })
+hi("Number", { fg = c.yellow })
+hi("Boolean", { fg = c.lavender })
+hi("Float", { fg = c.yellow })
+hi("Identifier", { fg = c.white })
+hi("Function", { fg = c.cyan })
+hi("Statement", { fg = c.purple_soft, bold = true })
+hi("Conditional", { fg = c.purple_soft, bold = true })
+hi("Repeat", { fg = c.purple_soft, bold = true })
+hi("Label", { fg = c.cyan })
+hi("Operator", { fg = c.soft_white })
+hi("Keyword", { fg = c.purple_soft, bold = true })
+hi("Exception", { fg = c.purple_soft, bold = true })
+hi("PreProc", { fg = c.pink })
+hi("Include", { fg = c.pink })
+hi("Define", { fg = c.pink })
+hi("Macro", { fg = c.pink })
+hi("PreCondit", { fg = c.pink })
+hi("Type", { fg = c.magenta })
+hi("StorageClass", { fg = c.purple_soft, bold = true })
+hi("Structure", { fg = c.cyan })
+hi("Typedef", { fg = c.cyan })
+hi("Special", { fg = c.pink })
+hi("SpecialChar", { fg = c.pink })
+hi("Tag", { fg = c.purple_soft })
+hi("Delimiter", { fg = c.muted })
+hi("Underlined", { fg = c.pink, underline = true })
+hi("Bold", { bold = true })
+hi("Italic", { italic = true })
+hi("Ignore", { fg = c.dim })
+hi("Error", { fg = c.red, bold = true })
+hi("Todo", { fg = c.yellow, bold = true, italic = true })
+
+-- Tree-sitter captures (including modern @ captures).
+local treesitter = {
+  ["@attribute"] = { fg = c.yellow },
+  ["@boolean"] = { fg = c.lavender },
+  ["@character"] = { fg = c.green },
+  ["@character.special"] = { fg = c.pink },
+  ["@comment"] = { fg = c.comment_orange }, --c.dim, italic = true },
+  ["@comment.documentation"] = { fg = c.comment_doc_orange }, --c.muted, italic = true },
+  ["@constant"] = { fg = c.yellow },
+  ["@constant.builtin"] = { fg = c.yellow },
+  ["@constructor"] = { fg = c.cyan },
+  ["@function"] = { fg = c.cyan },
+  ["@function.builtin"] = { fg = c.cyan },
+  ["@function.call"] = { fg = c.cyan },
+  ["@function.macro"] = { fg = c.pink },
+  ["@function.method"] = { fg = c.cyan },
+  ["@function.method.call"] = { fg = c.cyan },
+  ["@keyword"] = { fg = c.purple_soft, bold = true },
+  ["@keyword.conditional"] = { fg = c.purple_soft, bold = true },
+  ["@keyword.exception"] = { fg = c.purple_soft, bold = true },
+  ["@keyword.function"] = { fg = c.purple_soft, bold = true },
+  ["@keyword.import"] = { fg = c.pink },
+  ["@keyword.operator"] = { fg = c.purple_soft, bold = true },
+  ["@keyword.repeat"] = { fg = c.purple_soft, bold = true },
+  ["@label"] = { fg = c.cyan },
+  ["@markup.strong"] = { fg = c.lavender, bold = true },
+  ["@markup.italic"] = { fg = c.lavender, italic = true },
+  ["@markup.link"] = { fg = c.pink, italic = true },
+  ["@markup.link.url"] = { fg = c.cyan, underline = true },
+  ["@markup.heading"] = { fg = c.lavender, bold = true },
+  ["@markup.raw"] = { fg = c.green },
+  ["@markup.list"] = { fg = c.yellow },
+  ["@module"] = { fg = c.cyan },
+  ["@namespace"] = { fg = c.cyan },
+  ["@number"] = { fg = c.yellow },
+  ["@number.float"] = { fg = c.yellow },
+  ["@operator"] = { fg = c.soft_white },
+  ["@property"] = { fg = c.soft_white },
+  ["@punctuation.bracket"] = { fg = c.muted },
+  ["@punctuation.delimiter"] = { fg = c.muted },
+  ["@punctuation.special"] = { fg = c.purple_soft },
+  ["@string"] = { fg = c.green },
+  ["@string.escape"] = { fg = c.pink },
+  ["@string.regex"] = { fg = c.pink },
+  ["@string.special"] = { fg = c.pink },
+  ["@tag"] = { fg = c.purple_soft },
+  ["@tag.attribute"] = { fg = c.yellow },
+  ["@tag.delimiter"] = { fg = c.muted },
+  ["@type"] = { fg = c.magenta },
+  ["@type.builtin"] = { fg = c.magenta },
+  ["@type.definition"] = { fg = c.cyan },
+  ["@variable"] = { fg = c.white },
+  ["@variable.builtin"] = { fg = c.lavender },
+  ["@variable.member"] = { fg = c.soft_white },
+  ["@variable.parameter"] = { fg = c.pink_light },
+  ["@diff.plus"] = { fg = c.green },
+  ["@diff.minus"] = { fg = c.red },
+}
+for group, opts in pairs(treesitter) do
+  hi(group, opts)
+end
+
+-- Rust-specific captures. These preserve ElectroVoid's general scope mapping.
+hi("@lifetime", { fg = c.pink_light })
+hi("@attribute.rust", { fg = c.yellow })
+hi("@type.rust", { fg = c.magenta })
+hi("@type.builtin.rust", { fg = c.magenta })
+hi("@constant.builtin.rust", { fg = c.yellow })
+hi("@function.macro.rust", { fg = c.pink })
+hi("@variable.parameter.rust", { fg = c.pink_light })
+hi("@punctuation.bracket.rust", { fg = c.muted })
+
+-- LSP semantic tokens.
+hi("@lsp.type.class", { fg = c.magenta })
+hi("@lsp.type.enum", { fg = c.cyan })
+hi("@lsp.type.enumMember", { fg = c.cyan })
+hi("@lsp.type.function", { fg = c.cyan })
+hi("@lsp.type.method", { fg = c.cyan })
+hi("@lsp.type.namespace", { fg = c.cyan })
+hi("@lsp.type.parameter", { fg = c.pink_light })
+hi("@lsp.type.property", { fg = c.soft_white })
+hi("@lsp.type.struct", { fg = c.magenta })
+hi("@lsp.type.type", { fg = c.magenta })
+hi("@lsp.type.typeParameter", { fg = c.magenta })
+hi("@lsp.type.variable", { fg = c.white })
+hi("@lsp.mod.deprecated", { strikethrough = true })
+hi("@lsp.mod.readonly", { fg = c.yellow })
+
+-- Diagnostics and LSP.
+hi("DiagnosticError", { fg = c.red })
+hi("DiagnosticWarn", { fg = c.yellow })
+hi("DiagnosticInfo", { fg = c.cyan })
+hi("DiagnosticHint", { fg = c.cyan })
+hi("DiagnosticOk", { fg = c.green })
+hi("DiagnosticVirtualTextError", { fg = c.red, bg = "#301015" })
+hi("DiagnosticVirtualTextWarn", { fg = c.yellow, bg = "#30250a" })
+hi("DiagnosticVirtualTextInfo", { fg = c.cyan, bg = "#082d30" })
+hi("DiagnosticVirtualTextHint", { fg = c.cyan, bg = "#082d30" })
+hi("DiagnosticUnderlineError", { undercurl = true, sp = c.red })
+hi("DiagnosticUnderlineWarn", { undercurl = true, sp = c.yellow })
+hi("DiagnosticUnderlineInfo", { undercurl = true, sp = c.cyan })
+hi("DiagnosticUnderlineHint", { undercurl = true, sp = c.cyan })
+hi("LspReferenceText", { bg = "#1d0b2b" })
+hi("LspReferenceRead", { bg = "#1d0b2b" })
+hi("LspReferenceWrite", { bg = "#3b0066" })
+hi("InlayHint", { fg = c.dim, italic = true })
+hi("LspCodeLens", { fg = c.muted, italic = true })
+hi("LspInfoBorder", { fg = c.purple })
+
+-- Git signs and diff.
+hi("Added", { fg = c.green })
+hi("Changed", { fg = c.yellow })
+hi("Removed", { fg = c.red })
+hi("DiffAdd", { fg = c.green, bg = "#082a1c" })
+hi("DiffChange", { fg = c.yellow, bg = "#30250a" })
+hi("DiffDelete", { fg = c.red, bg = "#301015" })
+hi("DiffText", { fg = c.yellow, bg = "#30250a", bold = true })
+hi("GitSignsAdd", { fg = c.green })
+hi("GitSignsChange", { fg = c.yellow })
+hi("GitSignsDelete", { fg = c.red })
+
+-- Common LazyVim plugins.
+hi("SnacksIndent", { fg = "#333333" })
+hi("SnacksIndentScope", { fg = c.purple })
+hi("SnacksPickerBorder", { fg = c.purple, bg = c.surface })
+hi("SnacksPickerTitle", { fg = c.purple_bright, bg = c.surface, bold = true })
+hi("TelescopeBorder", { fg = c.purple, bg = c.surface })
+hi("TelescopeTitle", { fg = c.purple_bright, bg = c.surface, bold = true })
+hi("NeoTreeNormal", { fg = c.white, bg = c.surface })
+hi("NeoTreeNormalNC", { fg = c.white, bg = c.surface })
+hi("NeoTreeDirectoryIcon", { fg = c.cyan })
+hi("NeoTreeDirectoryName", { fg = c.cyan })
+hi("WhichKey", { fg = c.purple_bright })
+hi("WhichKeyGroup", { fg = c.cyan })
+hi("WhichKeyDesc", { fg = c.white })
+hi("WhichKeySeparator", { fg = c.muted })
+hi("NoiceCmdlinePopupBorder", { fg = c.purple })
+hi("NoicePopupBorder", { fg = c.purple })
+hi("NotifyERRORBorder", { fg = c.red })
+hi("NotifyWARNBorder", { fg = c.yellow })
+hi("NotifyINFOBorder", { fg = c.cyan })
+hi("NotifyDEBUGBorder", { fg = c.muted })
+hi("NotifyTRACEBorder", { fg = c.purple })
+hi("CmpItemKindFunction", { fg = c.cyan })
+hi("CmpItemKindMethod", { fg = c.cyan })
+hi("CmpItemKindVariable", { fg = c.white })
+hi("CmpItemKindClass", { fg = c.magenta })
+hi("CmpItemKindStruct", { fg = c.magenta })
+hi("CmpItemKindEnum", { fg = c.cyan })
+hi("CmpItemKindKeyword", { fg = c.purple_soft })
+
+-- Terminal ANSI palette from the Zed theme.
+vim.g.terminal_color_0 = "#000000"
+vim.g.terminal_color_1 = "#ff3b5c"
+vim.g.terminal_color_2 = "#00ff88"
+vim.g.terminal_color_3 = "#ffaa00"
+vim.g.terminal_color_4 = "#8800ff"
+vim.g.terminal_color_5 = "#ff2fa0"
+vim.g.terminal_color_6 = "#00e5ff"
+vim.g.terminal_color_7 = "#cccccc"
+vim.g.terminal_color_8 = "#444444"
+vim.g.terminal_color_9 = "#ff6b82"
+vim.g.terminal_color_10 = "#5cffb0"
+vim.g.terminal_color_11 = "#ffc44d"
+vim.g.terminal_color_12 = "#bb00ff"
+vim.g.terminal_color_13 = "#ff6cbe"
+vim.g.terminal_color_14 = "#66f0ff"
+vim.g.terminal_color_15 = "#ffffff"
