@@ -1,24 +1,40 @@
 -- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+-- Default options that are always set: https://github.com
 -- Add any additional options here
 vim.opt.winborder = "rounded"
 
+-- 1. Explicitly initialize rustaceanvim options
+vim.g.rustaceanvim = {
+  tools = {
+    float_win_config = {
+      border = "rounded",
+    },
+  },
+}
+
 local function set_completion_border_highlights()
-  local normal_float = vim.api.nvim_get_hl(0, { name = "NormalFloat", link = false })
-  local float_border = vim.api.nvim_get_hl(0, { name = "FloatBorder", link = false })
-  local documentation_background = vim.o.background == "dark" and "#33251C" or "#F4ECD8"
+  -- Premium rich dark brown theme values
+  local dark_brown_bg = "#261c14" -- Smooth dark chocolate background
+  local warm_tan_fg = "#dabfa5" -- Muted clay-brown text for readability
 
-  -- A warm paper-like background in light themes and dark brown in dark themes.
-  vim.api.nvim_set_hl(0, "BlinkCmpDoc", { fg = normal_float.fg, bg = documentation_background })
+  -- Border styling: Set background to transparent (nil) or black to match your theme
+  local border_bg = nil -- Use `nil` for transparent background, or "#181818" for solid black
+  local border_line = "#403022" -- A subtle brown/gray outline for the border ring itself
 
-  -- Blink's defaults deliberately blend its borders into the panel background.
-  -- Keep the menu border theme-coloured, while matching the documentation border
-  -- to the documentation panel.
+  -- Force global hover/popups to use the dark brown theme
+  vim.api.nvim_set_hl(0, "NormalFloat", { bg = dark_brown_bg, fg = warm_tan_fg, link = nil })
+  vim.api.nvim_set_hl(0, "FloatBorder", { bg = border_bg, fg = border_line, link = nil })
+
+  -- Align Blink's documentation popups to match the same theme perfectly
+  vim.api.nvim_set_hl(0, "BlinkCmpDoc", { bg = dark_brown_bg, fg = warm_tan_fg, link = nil })
+  vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { bg = border_bg, fg = border_line, link = nil })
   vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { link = "FloatBorder" })
-  vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = float_border.fg, bg = documentation_background })
 end
 
+-- Run it immediately on startup
 set_completion_border_highlights()
+
+-- Run it on colorscheme switches so it never gets overwritten again
 vim.api.nvim_create_autocmd("ColorScheme", {
   callback = set_completion_border_highlights,
 })
